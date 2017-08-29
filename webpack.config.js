@@ -1,15 +1,17 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
 
 module.exports = {
     entry: ["./src/js/main.js"],
     output: {
-        filename: './bundle.js'
+        // filename: 'bundle.js'
+        path: path.resolve(__dirname, 'dest/bundle.js')
     },
     devtool: 'source-map',
     module: {
         loaders: [{
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules)/,
                 loader: 'babel-loader',
                 query: {
                     presets: ['react', 'es2015']
